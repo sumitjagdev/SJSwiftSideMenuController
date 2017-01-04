@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'SJSwiftSideMenuController'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of SJSwiftSideMenuController.'
+  s.summary          = 'SJSwiftSideMenuController is Side Menu Controller for both Side Left & Right Menu.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,14 +18,16 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+SJSwiftSideMenuController is Side Menu Controller for both Side Left & Right Menu With Both type of Side menu That is SlideOver and SlideView.
+By only this menu controller you can use both left and right side menu with both type of sliding menu that is SlideOver the main view and SlideView with the main view.
+You have to just set property and the meny get reflect with you requirement.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/SJSwiftSideMenuController'
+  s.homepage         = 'https://github.com/sumitjagdev/SJSwiftSideMenuController'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Sumit Jagdev' => 'sumitjagdev3@gmail.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/SJSwiftSideMenuController.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/sumitjagdev/SJSwiftSideMenuController.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
@@ -37,6 +39,6 @@ TODO: Add long description of the pod here.
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

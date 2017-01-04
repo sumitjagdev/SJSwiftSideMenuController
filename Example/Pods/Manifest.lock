@@ -1,0 +1,16 @@
+PODS:
+  - SJSwiftSideMenuController (0.1.0)
+
+DEPENDENCIES:
+  - SJSwiftSideMenuController (from `../`)
+
+EXTERNAL SOURCES:
+  SJSwiftSideMenuController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SJSwiftSideMenuController: 192aea6b1108399037563e3c0252751c90ce1165
+
+PODFILE CHECKSUM: f301246e3383549e66af8d23483fa06c829d57cc
+
+COCOAPODS: 1.2.0.beta.1
