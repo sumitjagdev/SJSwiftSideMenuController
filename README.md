@@ -11,9 +11,9 @@ SJSwiftSideMenuController is Side Menu Controller for both Side Left & Right Men
 By only this menu controller you can use both left and right side menu with both type of sliding menu that is SlideOver the main view and SlideView with the main view.
 You have to just set property and the meny get reflect with you requirement.
 
-![](sample.gif?raw=true "SJSwiftSideMenuController screenshot")
-![](sample.gif?raw=true "SJSwiftSideMenuController screenshot")
-![](sample.gif?raw=true "SJSwiftSideMenuController screenshot")
+![](sample1.gif?raw=true "SJSwiftSideMenuController screenshot")
+![](sample2.gif?raw=true "SJSwiftSideMenuController screenshot")
+![](sample3.gif?raw=true "SJSwiftSideMenuController screenshot")
 
 ## Example
 
