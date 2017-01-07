@@ -1,5 +1,5 @@
 PODS:
-  - SJSwiftSideMenuController (0.1.0)
+  - SJSwiftSideMenuController (0.1.4)
 
 DEPENDENCIES:
   - SJSwiftSideMenuController (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SJSwiftSideMenuController: 192aea6b1108399037563e3c0252751c90ce1165
+  SJSwiftSideMenuController: c16c9e9fcbb17349212282541a4de6909af68e15
 
-PODFILE CHECKSUM: f301246e3383549e66af8d23483fa06c829d57cc
+PODFILE CHECKSUM: 57e97f378808e3af15f521d50ab87b0a9f010e10
 
 COCOAPODS: 1.2.0.beta.3

@@ -1,7 +1,9 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
 use_frameworks!
 
 target 'SJSwiftSideMenuController_Example' do
-  pod 'SJSwiftSideMenuController', :path => 'https://github.com/sumitjagdev/SJSwiftSideMenuController.git'
+  pod 'SJSwiftSideMenuController', :path => '../'
 
   target 'SJSwiftSideMenuController_Tests' do
     inherit! :search_paths
