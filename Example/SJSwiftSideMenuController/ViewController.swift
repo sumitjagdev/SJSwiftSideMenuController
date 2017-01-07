@@ -16,12 +16,16 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         if let image : UIImage = UIImage(named: "menu") as UIImage! {
-            SJSwiftSideMenuController .showLeftNavigationButtonWithImage(image: image)
-            SJSwiftSideMenuController .showRightNavigationButtonWithImage(image: image)
+            SJSwiftSideMenuController .showLeftMenuNavigationBarButton(image: image)
+            SJSwiftSideMenuController .showRightMenuNavigationBarButton(image: image)
         }
         
+        SJSwiftSideMenuController.enableDimBackground = true
+        
     }
-
+    @IBAction func toggleRightSideMenutapped(_ sender: AnyObject) {
+        SJSwiftSideMenuController.toggleRightSideMenu()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

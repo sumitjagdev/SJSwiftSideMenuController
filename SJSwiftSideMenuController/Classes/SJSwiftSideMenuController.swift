@@ -2,9 +2,11 @@
 //  SJSwiftSideMenuController.swift
 //  Pods
 //
-//  Created by Mac on 1/4/17.
+//  Created by Mac on 1/6/17.
+//  Copyright © 2017 Sumit Jagdev. All rights reserved.
 //
-//
+
+
 
 import UIKit
 
@@ -25,11 +27,13 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     
     private static var isSetup : Bool = false
     
-    static var shouldShowLeftButton : Bool = false
-    static var shouldShowRightButton : Bool = false
+    public static var enableDimBackground : Bool = false
     
-    static var leftMenuImage : UIImage = UIImage()
-    static var rightMenuImage : UIImage = UIImage()
+    public static var shouldLeaveSpaceForStatusBar : Bool = false
+    private static var shouldShowLeftButton : Bool = false
+    private static var shouldShowRightButton : Bool = false
+    private static var menuIcon_Left : UIImage = UIImage()
+    private static var menuIcon_Right : UIImage = UIImage()
     
     private static var navigator : UINavigationController! = nil
     private static var navigationContainer : UIViewController! = nil
@@ -37,16 +41,17 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     // left menu views
     private static var leftSideMenuController : UIViewController!
     private static var leftSideMenuType     : SJSideMenuType        = .SlideView
-    private static var leftMenuWidth : CGFloat = 150
+    public static var leftMenuWidth : CGFloat = 150
     private static var leftSideMenuView : UIView! = UIView()
     
     // Right menu views
     private static var rightSideMenuController : UIViewController!
     private static var rightSideMenuType     : SJSideMenuType        = .SlideView
-    private static var rightMenuWidth : CGFloat = 250
+    public static var rightMenuWidth : CGFloat = 250
     private static var rightSideMenuView : UIView! = UIView()
     
     private static var containerView : UIView! = UIView()
+    private static var dimBGView : UIView! = UIView()
     
     // Left Menu constraint
     private static var leadingConstraintOfSideMenu_Left : NSLayoutConstraint!
@@ -65,6 +70,8 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     private static var bottomConstraintOfContainer : NSLayoutConstraint!
     private static var trailingConstraintOfContainer : NSLayoutConstraint!
     
+    //MARK: Methods
+    
     public static func setUpNavigation(rootController:UIViewController, leftMenuController : UIViewController?, rightMenuController : UIViewController?, leftMenuType: SJSideMenuType, rightMenuType: SJSideMenuType){
         
         
@@ -78,6 +85,31 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         assert(isMenu != false, "Please provide side menu controller")
         
         isSetup = true
+        
+        //                leftSideMenuController = leftMenuController
+        ////        let leftNav : UINavigationController = UINavigationController(rootViewController: leftMenuController!)
+        ////        leftNav.isNavigationBarHidden = false
+        ////        let barLeft:UINavigationBar! =  leftNav.navigationBar
+        ////        barLeft.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        ////        barLeft.shadowImage = UIImage()
+        ////        barLeft.alpha = 0.0
+        //
+        ////        leftSideMenuController = leftNav
+        ////        leftSideMenuType = leftMenuType
+        //
+        //
+        ////                rightSideMenuController = rightMenuController
+        //        let rightNav : UINavigationController = UINavigationController(rootViewController: rightMenuController!)
+        //        rightNav.isNavigationBarHidden = false
+        //        let bar:UINavigationBar! =  rightNav.navigationBar
+        //        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        //        bar.shadowImage = UIImage()
+        ////        bar.alpha = 0.0
+        //
+        //        rightSideMenuController = rightNav
+        //        rightSideMenuType = rightMenuType
+        
+        
         
         leftSideMenuController = leftMenuController
         leftSideMenuType = leftMenuType
@@ -101,7 +133,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.isNavigationBarHidden = true
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         
         SJSwiftSideMenuController.navigator.delegate = self
@@ -127,33 +159,40 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    public static func showLeftNavigationButtonWithImage(image : UIImage){
-        shouldShowLeftButton = true
-        leftMenuImage = image
-    }
-    public static func showRightNavigationButtonWithImage(image : UIImage){
-        shouldShowRightButton = true
-        rightMenuImage = image
-    }
     
     private static func addDefaultLeftMenuButton(){
-        let menuIcon : UIImage = UIImage(named: "menu")!
+        //        let menuIcon : UIImage = UIImage(named: "menu")!
+        let menuIcon = menuIcon_Left
         let button : UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         button .setImage(menuIcon, for: .normal)
         button .addTarget(SJSwiftSideMenuController.navigationContainer, action: #selector(SJSwiftSideMenuController.leftMenuButtonTapped(_:)), for: .touchUpInside)
+        button .imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         let leftButton = UIBarButtonItem(customView: button)
         self.navigator.topViewController?.navigationItem.leftBarButtonItem = leftButton
         
     }
     private static func addDefaultRightMenuButton(){
-        let menuIcon : UIImage = UIImage(named: "menu")!
+        //        let menuIcon : UIImage = UIImage(named: "menu")!
+        let menuIcon = menuIcon_Right
         let button : UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         button .setImage(menuIcon, for: .normal)
         button .addTarget(SJSwiftSideMenuController.navigationContainer, action: #selector(SJSwiftSideMenuController.rightMenuButtonTapped(_:)), for: .touchUpInside)
+        button .imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         let rightButton = UIBarButtonItem(customView: button)
         self.navigator.topViewController?.navigationItem.rightBarButtonItem = rightButton
         
     }
+    
+    public static func showLeftMenuNavigationBarButton(image : UIImage){
+        shouldShowLeftButton = true
+        menuIcon_Left = image
+    }
+    
+    public static func showRightMenuNavigationBarButton(image : UIImage){
+        shouldShowRightButton = true
+        menuIcon_Right = image
+    }
+    
     static func setUpLeftMenuWidth(width : CGFloat){
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         leftMenuWidth = width
@@ -170,6 +209,26 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     }
     
     func setUpContainers() {
+        //======================= Container View ===============================
+        SJSwiftSideMenuController.containerView = UIView()
+        SJSwiftSideMenuController.containerView.backgroundColor = UIColor.purple
+        let frame = self.view.bounds
+        
+        SJSwiftSideMenuController.containerView.frame = frame
+        SJSwiftSideMenuController.containerView.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
+        self.view.addSubview(SJSwiftSideMenuController.containerView)
+        
+        SJSwiftSideMenuController.topConstraintOfSideContainer = SJSwiftSideMenuController.containerView.addTopConstraint(toView: view, constant: 0.0)
+        SJSwiftSideMenuController.leadingConstraintOfContainer = SJSwiftSideMenuController.containerView.addLeadingConstraint(toView: view, constant: 0.0)
+        SJSwiftSideMenuController.trailingConstraintOfContainer = SJSwiftSideMenuController.containerView.addTrailingConstraint(toView: view, constant: 0.0)
+        SJSwiftSideMenuController.bottomConstraintOfContainer = SJSwiftSideMenuController.containerView.addBottomConstraint(toView: view, constant: 0.0)
+        
+        addViewControllerAsChildViewController(SJSwiftSideMenuController.navigator, inContainer: SJSwiftSideMenuController.containerView)
+        
+        
+        //===================== Dim BG View ================================
+        
+        addDimBG()
         //=================== Left menu setup=========================
         if SJSwiftSideMenuController.leftSideMenuController != nil {
             SJSwiftSideMenuController.leftSideMenuView = UIView()
@@ -192,6 +251,8 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
             SJSwiftSideMenuController.bottomConstraintOfSideMenu_Left = SJSwiftSideMenuController.leftSideMenuView.addBottomConstraint(toView: view, constant: 0.0)
             
             addViewControllerAsChildViewController(SJSwiftSideMenuController.leftSideMenuController, inContainer: SJSwiftSideMenuController.leftSideMenuView)
+            
+            SJSwiftSideMenuController.leftSideMenuView.isHidden = true
         }
         
         
@@ -201,46 +262,75 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
             SJSwiftSideMenuController.rightSideMenuView = UIView()
             SJSwiftSideMenuController.rightSideMenuView.backgroundColor = UIColor.white
             var frameRight = CGRect(x: self.view.frame.size.width, y: 0, width: SJSwiftSideMenuController.rightMenuWidth, height: self.view.frame.size.height)
+            
             if SJSwiftSideMenuController.rightSideMenuType == .SlideView {
                 //                frameRight.origin.x = -(SJNavigationController.rightMenuWidth)
-                frameRight.origin.x = self.view.frame.size.width
+                frameRight.origin.x = 0
             }
             SJSwiftSideMenuController.rightSideMenuView.frame = frameRight
             SJSwiftSideMenuController.rightSideMenuView.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
             self.view.addSubview(SJSwiftSideMenuController.rightSideMenuView)
+            self.view.bringSubview(toFront: SJSwiftSideMenuController.rightSideMenuView)
             
             SJSwiftSideMenuController.topConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addTopConstraint(toView: view, constant: 0.0)
             if SJSwiftSideMenuController.rightSideMenuType == .SlideOver {
-                SJSwiftSideMenuController.leadingConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addLeadingConstraint(toView: view, constant: view.frame.size.width)
+                SJSwiftSideMenuController.leadingConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addLeadingConstraint(toView: view, constant: view.frame.size.width - SJSwiftSideMenuController.rightMenuWidth)
             }else{
                 SJSwiftSideMenuController.leadingConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addLeadingConstraint(toView: view, constant: view.frame.size.width - SJSwiftSideMenuController.rightMenuWidth)
             }
             SJSwiftSideMenuController.widthConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addWidthConstraint(widthConstant: SJSwiftSideMenuController.rightMenuWidth)
             SJSwiftSideMenuController.bottomConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addBottomConstraint(toView: view, constant: 0.0)
             
+            //            SJSwiftSideMenuController.rightSideMenuView.backgroundColor = UIColor.red
             addViewControllerAsChildViewController(SJSwiftSideMenuController.rightSideMenuController, inContainer: SJSwiftSideMenuController.rightSideMenuView)
+            
+            SJSwiftSideMenuController.rightSideMenuView.isHidden = true
         }
         
         
-        //==================================================================
-        SJSwiftSideMenuController.containerView = UIView()
-        SJSwiftSideMenuController.containerView.backgroundColor = UIColor.purple
-        let frame = self.view.bounds
         
-        SJSwiftSideMenuController.containerView.frame = frame
-        SJSwiftSideMenuController.containerView.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
-        self.view.addSubview(SJSwiftSideMenuController.containerView)
-        
-        SJSwiftSideMenuController.topConstraintOfSideContainer = SJSwiftSideMenuController.containerView.addTopConstraint(toView: view, constant: 0.0)
-        SJSwiftSideMenuController.leadingConstraintOfContainer = SJSwiftSideMenuController.containerView.addLeadingConstraint(toView: view, constant: 0.0)
-        SJSwiftSideMenuController.trailingConstraintOfContainer = SJSwiftSideMenuController.containerView.addTrailingConstraint(toView: view, constant: 0.0)
-        SJSwiftSideMenuController.bottomConstraintOfContainer = SJSwiftSideMenuController.containerView.addBottomConstraint(toView: view, constant: 0.0)
-        
-        addViewControllerAsChildViewController(SJSwiftSideMenuController.navigator, inContainer: SJSwiftSideMenuController.containerView)
         
         
     }
+    private func addDimBG() {
+        if SJSwiftSideMenuController.dimBGView != nil {
+            SJSwiftSideMenuController.dimBGView.removeFromSuperview()
+        }
+        
+        SJSwiftSideMenuController.dimBGView = UIView()
+        SJSwiftSideMenuController.dimBGView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        let frame = self.view.bounds
+        
+        SJSwiftSideMenuController.dimBGView.frame = frame
+        SJSwiftSideMenuController.dimBGView.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
+        self.view.addSubview(SJSwiftSideMenuController.dimBGView)
+        
+        SJSwiftSideMenuController.dimBGView.addTopConstraint(toView: view, constant: 0.0)
+        SJSwiftSideMenuController.dimBGView.addLeadingConstraint(toView: view, constant: 0.0)
+        SJSwiftSideMenuController.dimBGView.addTrailingConstraint(toView: view, constant: 0.0)
+        SJSwiftSideMenuController.dimBGView.addBottomConstraint(toView: view, constant: 0.0)
+        SJSwiftSideMenuController.dimBGView.isHidden = true
+        let tapG = UITapGestureRecognizer(target: self, action: #selector(SJSwiftSideMenuController.dimBgTappedGesture(gesture:)))
+        tapG.numberOfTapsRequired = 1
+        SJSwiftSideMenuController.dimBGView.addGestureRecognizer(tapG)
+        SJSwiftSideMenuController.dimBGView.isHidden = true
+    }
     
+    private static func showDimBackground(show: Bool) {
+        if SJSwiftSideMenuController.dimBGView == nil {
+            return
+        }
+        if enableDimBackground == false {
+            return;
+        }
+        UIView.transition(with: SJSwiftSideMenuController.dimBGView, duration: 0.25, options: .curveEaseInOut, animations: {() -> Void in
+            
+            SJSwiftSideMenuController.dimBGView.isHidden = !show
+            
+            }, completion: { _ in
+                
+        })
+    }
     fileprivate func addViewControllerAsChildViewController(_ viewController: UIViewController, inContainer: UIView) {
         
         
@@ -262,11 +352,35 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         //        // Notify Child View Controller
         viewController.didMove(toParentViewController: self)
     }
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if SJSwiftSideMenuController.shouldLeaveSpaceForStatusBar == true {
+            if UIApplication.shared.isStatusBarHidden {
+                SJSwiftSideMenuController.topConstraintOfSideContainer.constant = 0
+                SJSwiftSideMenuController.topConstraintOfSideMenu_Left.constant = 0
+                SJSwiftSideMenuController.topConstraintOfSideMenu_Right.constant = 0
+            }else{
+                SJSwiftSideMenuController.topConstraintOfSideContainer.constant = 20
+                SJSwiftSideMenuController.topConstraintOfSideMenu_Left.constant = 20
+                SJSwiftSideMenuController.topConstraintOfSideMenu_Right.constant = 20
+            }
+        }
+        
+    }
     @objc private func toggleMenuWithGesture(gesture: UISwipeGestureRecognizer) {
         if SJSwiftSideMenuController.swipeMenuSide == .RIGHT {
             toggleRightMenuWithGesture(gesture: gesture)
         }else if SJSwiftSideMenuController.swipeMenuSide == .LEFT {
             toggleLeftMenuWithGesture(gesture: gesture)
+        }
+    }
+    
+    @objc private func dimBgTappedGesture(gesture: UITapGestureRecognizer) {
+        if SJSwiftSideMenuController.leftSideMenuController != nil {
+            SJSwiftSideMenuController.hideLeftMenu()
+        }
+        if SJSwiftSideMenuController.rightSideMenuController != nil {
+            SJSwiftSideMenuController.hideRightMenu()
         }
     }
     
@@ -340,9 +454,13 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         }
     }
     private static func showLeftMenuOver() {
+        
         if SJSwiftSideMenuController.rightSideMenuController != nil {
             SJSwiftSideMenuController.hideRightMenu()
         }
+        
+        showDimBackground(show: true)
+        
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         SJSwiftSideMenuController.navigationContainer.view.bringSubview(toFront: SJSwiftSideMenuController.leftSideMenuView)
         SJSwiftSideMenuController.leftSideMenuView.isHidden = false
@@ -351,12 +469,17 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
             frame.origin.x = 0
             leftSideMenuView.frame = frame
             SJSwiftSideMenuController.navigationContainer.view.layoutSubviews()
+            SJSwiftSideMenuController.leftSideMenuView.layoutSubviews()
+            SJSwiftSideMenuController.navigator.view.layoutSubviews()
         }) { (isComplete) in
             
         }
         
     }
     private static func hideLeftMenuOver() {
+        
+        showDimBackground(show: false)
+        
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         SJSwiftSideMenuController.navigationContainer.view.bringSubview(toFront: SJSwiftSideMenuController.leftSideMenuView)
         UIView.animate(withDuration: 0.25, animations: {
@@ -364,6 +487,8 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
             frame.origin.x = -(leftMenuWidth)
             leftSideMenuView.frame = frame
             SJSwiftSideMenuController.navigationContainer.view.layoutSubviews()
+            SJSwiftSideMenuController.leftSideMenuView.layoutSubviews()
+            SJSwiftSideMenuController.navigator.view.layoutSubviews()
         }) { (isComplete) in
             SJSwiftSideMenuController.leftSideMenuView.isHidden = true
         }
@@ -371,9 +496,14 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     }
     
     private static func showLeftMenuBySide(){
+        
         if SJSwiftSideMenuController.rightSideMenuController != nil {
             SJSwiftSideMenuController.hideRightMenu()
         }
+        
+        
+        showDimBackground(show: true)
+        
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         SJSwiftSideMenuController.leftSideMenuView.isHidden = false
         UIView.animate(withDuration: 0.25, animations: {
@@ -392,6 +522,9 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     }
     
     private static func hideLeftMenuBySide(){
+        
+        showDimBackground(show: false)
+        
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         UIView.animate(withDuration: 0.25, animations: {
             var frame = SJSwiftSideMenuController.containerView.frame
@@ -415,9 +548,9 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         SJSwiftSideMenuController.validateForRightMenuSetup()
         if SJSwiftSideMenuController.rightSideMenuType == .SlideOver {
-            toggleRightSlideOverMenu()
+            SJSwiftSideMenuController.toggleRightSlideOverMenu()
         }else if SJSwiftSideMenuController.rightSideMenuType == .SlideView {
-            toggleRightSlideViewMenu()
+            SJSwiftSideMenuController.toggleRightSlideViewMenu()
         }
     }
     
@@ -426,18 +559,18 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         SJSwiftSideMenuController.validateForRightMenuSetup()
         if SJSwiftSideMenuController.rightSideMenuType == .SlideOver {
-            showRightMenuOver()
+            SJSwiftSideMenuController.showRightMenuOver()
         }else if SJSwiftSideMenuController.rightSideMenuType == .SlideView {
-            showRightMenuBySide()
+            SJSwiftSideMenuController.showRightMenuBySide()
         }
     }
     public static func hideRightMenu(){
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         SJSwiftSideMenuController.validateForRightMenuSetup()
         if SJSwiftSideMenuController.rightSideMenuType == .SlideOver {
-            hideRightMenuOver()
+            SJSwiftSideMenuController.hideRightMenuOver()
         }else if SJSwiftSideMenuController.rightSideMenuType == .SlideView {
-            hideRightMenuBySide()
+            SJSwiftSideMenuController.hideRightMenuBySide()
         }
     }
     private static func toggleRightSlideOverMenu() {
@@ -452,9 +585,9 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     private static func toggleRightSlideViewMenu() {
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         if SJSwiftSideMenuController.containerView.frame.origin.x == 0 {
-            showRightMenuBySide()
+            SJSwiftSideMenuController.showRightMenuBySide()
         }else{
-            hideRightMenuBySide()
+            SJSwiftSideMenuController.hideRightMenuBySide()
         }
     }
     
@@ -474,45 +607,49 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         }
     }
     private static func showRightMenuOver() {
+        
         if SJSwiftSideMenuController.leftSideMenuController != nil {
             SJSwiftSideMenuController.hideLeftMenu()
         }
         
+        showDimBackground(show: true)
+        
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         SJSwiftSideMenuController.navigationContainer.view.bringSubview(toFront: SJSwiftSideMenuController.rightSideMenuView)
         SJSwiftSideMenuController.rightSideMenuView.isHidden = false
-        UIView.animate(withDuration: 0.25, animations: {
-            var frame = rightSideMenuView.frame
-            frame.origin.x = containerView.frame.size.width - rightMenuWidth
-            rightSideMenuView.frame = frame
-            SJSwiftSideMenuController.navigationContainer.view.layoutSubviews()
-        }) { (isComplete) in
-            
-        }
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.leadingConstraintOfSideMenu_Right.constant = SJSwiftSideMenuController.containerView.frame.size.width - rightMenuWidth
+            SJSwiftSideMenuController.navigationContainer.view.layoutIfNeeded()
+            }, completion: nil)
         
     }
     private static func hideRightMenuOver() {
+        showDimBackground(show: false)
+        
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         SJSwiftSideMenuController.navigationContainer.view.bringSubview(toFront: SJSwiftSideMenuController.rightSideMenuView)
-        UIView.animate(withDuration: 0.25, animations: {
-            var frame = rightSideMenuView.frame
-            frame.origin.x = containerView.frame.size.width
-            rightSideMenuView.frame = frame
-            SJSwiftSideMenuController.navigationContainer.view.layoutSubviews()
-        }) { (isComplete) in
-            SJSwiftSideMenuController.rightSideMenuView.isHidden = true
-        }
         
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.leadingConstraintOfSideMenu_Right.constant = SJSwiftSideMenuController.containerView.frame.size.width
+            SJSwiftSideMenuController.navigationContainer.view.layoutIfNeeded()
+            }, completion: { _ in
+                SJSwiftSideMenuController.rightSideMenuView.isHidden = true
+        })
     }
     
     private static func showRightMenuBySide(){
+        
         if SJSwiftSideMenuController.leftSideMenuController != nil {
             SJSwiftSideMenuController.hideLeftMenu()
         }
+        showDimBackground(show: true)
+        
         
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         SJSwiftSideMenuController.rightSideMenuView.isHidden = false
-        UIView.animate(withDuration: 0.25, animations: {
+        
+        UIView.transition(with: rightSideMenuView, duration: 0.5, options: .curveEaseOut, animations: {() -> Void in
             var frame = SJSwiftSideMenuController.containerView.frame
             frame.origin.x = -(rightMenuWidth)
             SJSwiftSideMenuController.containerView.frame = frame
@@ -522,14 +659,18 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
             frame.origin.x = containerView.frame.size.width - rightMenuWidth
             rightSideMenuView.frame = frame
             SJSwiftSideMenuController.containerView.layoutIfNeeded()
-        }) { (isComplete) in
             
-        }
+            }, completion: { _ in
+                
+        })
     }
     
     private static func hideRightMenuBySide(){
+        showDimBackground(show: false)
+        
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
-        UIView.animate(withDuration: 0.25, animations: {
+        
+        UIView.transition(with: rightSideMenuView, duration: 0.5, options: .curveEaseOut, animations: {() -> Void in
             var frame = SJSwiftSideMenuController.containerView.frame
             frame.origin.x = 0
             SJSwiftSideMenuController.containerView.frame = frame
@@ -539,9 +680,10 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
             frame.origin.x = containerView.frame.size.width
             rightSideMenuView.frame = frame
             SJSwiftSideMenuController.containerView.layoutIfNeeded()
-        }) { (isComplete) in
-            SJSwiftSideMenuController.rightSideMenuView.isHidden = true
-        }
+            
+            }, completion: { _ in
+                SJSwiftSideMenuController.rightSideMenuView.isHidden = true
+        })
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -584,7 +726,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     }
     
     // Return modal view controller if it exists. Otherwise the top view controller.
-    static var visibleViewController: UIViewController?{
+    public static var visibleViewController: UIViewController?{
         get {
             SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
             return SJSwiftSideMenuController.navigator.visibleViewController
@@ -592,7 +734,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     }
     
     // The current view controller stack.
-    static var viewControllers: [UIViewController]{
+    public static var viewControllers: [UIViewController]{
         get {
             SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
             return SJSwiftSideMenuController.navigator.viewControllers
@@ -624,6 +766,18 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         
         assert(SJSwiftSideMenuController.rightSideMenuController != nil, "Please set RightSideMenuController before using left menu methods.") // here
     }
+    
+    
+    public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        if SJSwiftSideMenuController.leftSideMenuController != nil {
+            SJSwiftSideMenuController.hideLeftMenu()
+        }
+        if SJSwiftSideMenuController.rightSideMenuController != nil {
+            SJSwiftSideMenuController.hideRightMenu()
+        }
+    }
 }
 
 //MARK : UIColor
@@ -643,6 +797,15 @@ extension UIColor {
                        green: .random(),
                        blue:  .random(),
                        alpha: 1.0)
+    }
+}
+
+extension UIButton {
+    public func centerTextAndImage(spacing: CGFloat) {
+        let insetAmount = spacing / 2
+        imageEdgeInsets = UIEdgeInsets(top: 0, left: -insetAmount, bottom: 0, right: insetAmount)
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: -insetAmount)
+        contentEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: insetAmount)
     }
 }
 
@@ -977,3 +1140,4 @@ extension UIView {
         return constraint
     }
 }
+

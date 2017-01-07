@@ -30,9 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let rootVC = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
         
-        SJSwiftSideMenuController.setUpNavigation(rootController: rootVC, leftMenuController: sideVC_L, rightMenuController: sideVC_R, leftMenuType: .SlideOver, rightMenuType: .SlideView)
+        SJSwiftSideMenuController.setUpNavigation(rootController: rootVC, leftMenuController: sideVC_L, rightMenuController: sideVC_R, leftMenuType: .SlideView, rightMenuType: .SlideView)
         
-        SJSwiftSideMenuController.enableSwipeGestureWithMenuSide(menuSide: .RIGHT)
+        SJSwiftSideMenuController.enableSwipeGestureWithMenuSide(menuSide: .LEFT)
         
         return true
     }

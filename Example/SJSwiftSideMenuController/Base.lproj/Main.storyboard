@@ -1,92 +1,130 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Bce-xs-TBn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mod-mQ-MZI">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController storyboardIdentifier="ViewController" id="vXZ-lx-hvc" customClass="ViewController" customModule="SJSwiftSideMenuController_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-92" y="116"/>
-        </scene>
         <!--Swift Side Menu Controller-->
-        <scene sceneID="Bgk-PY-URv">
+        <scene sceneID="A1C-nF-tZZ">
             <objects>
-                <viewController id="Bce-xs-TBn" customClass="SJSwiftSideMenuController" customModule="SJSwiftSideMenuController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SJNavigationController" id="mod-mQ-MZI" customClass="SJSwiftSideMenuController" customModule="SJSwiftSideMenuController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RGR-ea-tvY"/>
-                        <viewControllerLayoutGuide type="bottom" id="IWT-2K-YUc"/>
+                        <viewControllerLayoutGuide type="top" id="rq7-GW-JB7"/>
+                        <viewControllerLayoutGuide type="bottom" id="lUW-fT-yu3"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="p9Q-vb-g2M">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hn5-um-wDx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="916" y="-45"/>
-        </scene>
-        <!--Side Menu Controller-->
-        <scene sceneID="0cM-I1-kfW">
-            <objects>
-                <viewController storyboardIdentifier="SideMenuController" automaticallyAdjustsScrollViewInsets="NO" id="buX-68-aNP" customClass="SideMenuController" customModule="SJSwiftSideMenuController_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lnm-6d-ndl"/>
-                        <viewControllerLayoutGuide type="bottom" id="fh8-j3-v3L"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GZr-aG-gtC">
+                    <view key="view" contentMode="scaleToFill" id="Qmf-FI-PzM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zry-1w-VfZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Navigation Container" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txR-Jb-gYK">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="txR-Jb-gYK" firstAttribute="centerY" secondItem="Qmf-FI-PzM" secondAttribute="centerY" id="5u7-Kp-JMg"/>
+                            <constraint firstItem="txR-Jb-gYK" firstAttribute="centerX" secondItem="Qmf-FI-PzM" secondAttribute="centerX" id="EQF-Il-wHG"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="03z-ZY-4Fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-879" y="-367"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="SJSwiftSideMenuController_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jxs-3k-Be9">
+                                <color key="backgroundColor" red="0.0" green="0.46274509800000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                <state key="normal" title="   Click Here to Toggle Right Menu   ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleRightSideMenutapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uXp-Px-Ie9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to Toggle Left Menu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8M-AR-NFc">
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="jxs-3k-Be9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3vR-Av-fuP"/>
+                            <constraint firstItem="h8M-AR-NFc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="7c9-U6-5e8"/>
+                            <constraint firstItem="h8M-AR-NFc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Eys-3j-ywb"/>
+                            <constraint firstItem="h8M-AR-NFc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Gkx-1c-Dbh"/>
+                            <constraint firstItem="jxs-3k-Be9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="c6A-PU-2gW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="h8M-AR-NFc" secondAttribute="trailing" constant="20" id="pI0-mC-kAY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="e9s-JO-Hnr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8.8000000000000007" y="-366.56671664167919"/>
+        </scene>
+        <!--Side Menu Controller-->
+        <scene sceneID="hN3-5q-2cr">
+            <objects>
+                <viewController storyboardIdentifier="SideMenuController" automaticallyAdjustsScrollViewInsets="NO" id="AOU-pf-DFJ" customClass="SideMenuController" customModule="SJSwiftSideMenuController_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c6u-Bl-eUe"/>
+                        <viewControllerLayoutGuide type="bottom" id="3eP-Gt-u3O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zw7-6a-BQD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NgV-5D-jdT">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="ggG-VI-BuB">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="DvF-2P-Oli">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ggG-VI-BuB" id="eL1-0u-Lcy">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DvF-2P-Oli" id="djm-iW-h4a">
                                             <frame key="frameInset" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="buX-68-aNP" id="e5i-M4-e9y"/>
-                                    <outlet property="delegate" destination="buX-68-aNP" id="Wsy-pf-9C2"/>
+                                    <outlet property="dataSource" destination="AOU-pf-DFJ" id="bAk-bv-Boo"/>
+                                    <outlet property="delegate" destination="AOU-pf-DFJ" id="E7y-k2-Nz0"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fh8-j3-v3L" firstAttribute="top" secondItem="Zry-1w-VfZ" secondAttribute="bottom" id="H6O-UG-GSq"/>
-                            <constraint firstItem="Zry-1w-VfZ" firstAttribute="width" secondItem="GZr-aG-gtC" secondAttribute="width" id="diL-Fa-gqa"/>
-                            <constraint firstItem="Zry-1w-VfZ" firstAttribute="top" secondItem="lnm-6d-ndl" secondAttribute="bottom" id="lUb-td-D5w"/>
-                            <constraint firstItem="Zry-1w-VfZ" firstAttribute="centerX" secondItem="GZr-aG-gtC" secondAttribute="centerX" id="qTJ-8H-rz0"/>
+                            <constraint firstItem="NgV-5D-jdT" firstAttribute="centerX" secondItem="zw7-6a-BQD" secondAttribute="centerX" id="MWI-Ou-4Sa"/>
+                            <constraint firstItem="NgV-5D-jdT" firstAttribute="top" secondItem="c6u-Bl-eUe" secondAttribute="bottom" id="ZSV-Id-Cs1"/>
+                            <constraint firstItem="3eP-Gt-u3O" firstAttribute="top" secondItem="NgV-5D-jdT" secondAttribute="bottom" id="bCS-sD-ynl"/>
+                            <constraint firstItem="NgV-5D-jdT" firstAttribute="width" secondItem="zw7-6a-BQD" secondAttribute="width" id="y9X-M9-r4b"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="menuTableView" destination="Zry-1w-VfZ" id="9f7-0A-kcP"/>
+                        <outlet property="menuTableView" destination="NgV-5D-jdT" id="RlI-NW-RoP"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yhe-Px-KHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z3l-Ft-J1U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626" y="-168"/>
+            <point key="canvasLocation" x="794" y="-367"/>
         </scene>
     </scenes>
 </document>
