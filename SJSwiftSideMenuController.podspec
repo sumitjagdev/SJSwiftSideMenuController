@@ -24,7 +24,7 @@ You have to just set property and the meny get reflect with you requirement.
                        DESC
 
   s.homepage         = 'https://github.com/sumitjagdev/SJSwiftSideMenuController'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots     = 'https://github.com/sumitjagdev/SJSwiftSideMenuController/blob/master/sample1.gif'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Sumit Jagdev' => 'sumitjagdev3@gmail.com' }
   s.source           = { :git => 'https://github.com/sumitjagdev/SJSwiftSideMenuController.git', :tag => s.version.to_s }
