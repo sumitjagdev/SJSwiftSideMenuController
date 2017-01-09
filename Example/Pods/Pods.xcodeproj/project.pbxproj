@@ -420,6 +420,42 @@
 			};
 			name = Debug;
 		};
+		381BC0A57A9F55F733A09DF8DD140A9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51794FFE7F253C634BF7AE44BFCDEE08 /* Pods-SJSwiftSideMenuController_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SJSwiftSideMenuController_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SJSwiftSideMenuController_Tests/Pods-SJSwiftSideMenuController_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SJSwiftSideMenuController_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		44CDBB6D11DE06DB64D6268622BDC47E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -460,7 +496,40 @@
 			};
 			name = Release;
 		};
-		4ABBE96F1B56D6D5501867D48074DCFC /* Debug */ = {
+		5E0BAE7C136D4E203D7CC8A78F0AA833 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FA2B221FF96823F728D9F458F65A7A6 /* SJSwiftSideMenuController.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SJSwiftSideMenuController/SJSwiftSideMenuController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SJSwiftSideMenuController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SJSwiftSideMenuController/SJSwiftSideMenuController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SJSwiftSideMenuController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7C77A36E38CC13FB9F71F7C9566FF7EA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE8193A4204EC45C81685A9515423889 /* Pods-SJSwiftSideMenuController_Example.debug.xcconfig */;
 			buildSettings = {
@@ -487,38 +556,6 @@
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_SJSwiftSideMenuController_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		5E0BAE7C136D4E203D7CC8A78F0AA833 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4FA2B221FF96823F728D9F458F65A7A6 /* SJSwiftSideMenuController.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SJSwiftSideMenuController/SJSwiftSideMenuController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SJSwiftSideMenuController/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SJSwiftSideMenuController/SJSwiftSideMenuController.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SJSwiftSideMenuController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -561,42 +598,7 @@
 			};
 			name = Release;
 		};
-		DBAB1876DA322AFE274D8D33846CCA2A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51794FFE7F253C634BF7AE44BFCDEE08 /* Pods-SJSwiftSideMenuController_Tests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SJSwiftSideMenuController_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SJSwiftSideMenuController_Tests/Pods-SJSwiftSideMenuController_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SJSwiftSideMenuController_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E20129DFCC28327E3D66049871FF300A /* Debug */ = {
+		B11F1ADF65A70091C55450CD6535FA06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 11521C1178D1BA84A06045A31D83CCBF /* Pods-SJSwiftSideMenuController_Tests.debug.xcconfig */;
 			buildSettings = {
@@ -625,13 +627,14 @@
 				PRODUCT_NAME = Pods_SJSwiftSideMenuController_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		E3A6DE23062F927B27378CFD732371B1 /* Release */ = {
+		FE3DBD9AF432267E5B4E843CFF74702E /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C565620570E0916219211F8A871C0263 /* Pods-SJSwiftSideMenuController_Example.release.xcconfig */;
 			buildSettings = {
@@ -660,6 +663,7 @@
 				PRODUCT_NAME = Pods_SJSwiftSideMenuController_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -690,8 +694,8 @@
 		6FE49D3670FC58C98C9C57998BAB4FF8 /* Build configuration list for PBXNativeTarget "Pods-SJSwiftSideMenuController_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4ABBE96F1B56D6D5501867D48074DCFC /* Debug */,
-				E3A6DE23062F927B27378CFD732371B1 /* Release */,
+				7C77A36E38CC13FB9F71F7C9566FF7EA /* Debug */,
+				FE3DBD9AF432267E5B4E843CFF74702E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -699,8 +703,8 @@
 		CB010370143831668EA2319E6336503D /* Build configuration list for PBXNativeTarget "Pods-SJSwiftSideMenuController_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E20129DFCC28327E3D66049871FF300A /* Debug */,
-				DBAB1876DA322AFE274D8D33846CCA2A /* Release */,
+				B11F1ADF65A70091C55450CD6535FA06 /* Debug */,
+				381BC0A57A9F55F733A09DF8DD140A9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
