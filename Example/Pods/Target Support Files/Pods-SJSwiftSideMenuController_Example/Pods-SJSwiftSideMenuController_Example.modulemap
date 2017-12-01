@@ -1,6 +1,0 @@
-framework module Pods_SJSwiftSideMenuController_Example {
-  umbrella header "Pods-SJSwiftSideMenuController_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}
