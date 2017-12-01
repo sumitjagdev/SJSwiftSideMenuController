@@ -1,6 +1,5 @@
 # SJSwiftSideMenuController
 
-[![CI Status](http://img.shields.io/travis/Sumit Jagdev/SJSwiftSideMenuController.svg?style=flat)](https://travis-ci.org/Sumit Jagdev/SJSwiftSideMenuController)
 [![Version](https://img.shields.io/cocoapods/v/SJSwiftSideMenuController.svg?style=flat)](http://cocoapods.org/pods/SJSwiftSideMenuController)
 [![License](https://img.shields.io/cocoapods/l/SJSwiftSideMenuController.svg?style=flat)](http://cocoapods.org/pods/SJSwiftSideMenuController)
 [![Platform](https://img.shields.io/cocoapods/p/SJSwiftSideMenuController.svg?style=flat)](http://cocoapods.org/pods/SJSwiftSideMenuController)
