@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 SJSwiftSideMenuController is Side Menu Controller for both Side Left & Right Menu With Both type of Side menu That is SlideOver and SlideView.
 By only this menu controller you can use both left and right side menu with both type of sliding menu that is SlideOver the main view and SlideView with the main view.
-You have to just set property and the meny get reflect with you requirement.
+You have to just set property and the menu get reflect with you requirement.
                        DESC
 
   s.homepage         = 'https://github.com/sumitjagdev/SJSwiftSideMenuController'
@@ -43,5 +43,6 @@ You have to just set property and the meny get reflect with you requirement.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+
+
 end
