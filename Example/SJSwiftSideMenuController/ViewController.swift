@@ -20,7 +20,7 @@ class ViewController: UIViewController {
             SJSwiftSideMenuController .showRightMenuNavigationBarButton(image: image)
         }
         
-        SJSwiftSideMenuController.enableDimBackground = true
+        SJSwiftSideMenuController.enableDimbackground = true
         
     }
     @IBAction func toggleRightSideMenutapped(_ sender: AnyObject) {

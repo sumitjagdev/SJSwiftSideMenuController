@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SJSwiftSideMenuController'
-  s.version          = '0.1.5'
+  s.version          = '0.2'
   s.summary          = 'SJSwiftSideMenuController is Side Menu Controller for both Side Left & Right Menu.'
 
 # This description is used to generate tags and improve search results.
@@ -20,11 +20,11 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 SJSwiftSideMenuController is Side Menu Controller for both Side Left & Right Menu With Both type of Side menu That is SlideOver and SlideView.
 By only this menu controller you can use both left and right side menu with both type of sliding menu that is SlideOver the main view and SlideView with the main view.
-You have to just set property and the menu get reflect with you requirement.
+You have to just set property and the meny get reflect with you requirement.
                        DESC
 
   s.homepage         = 'https://github.com/sumitjagdev/SJSwiftSideMenuController'
-  s.screenshots     = 'https://github.com/sumitjagdev/SJSwiftSideMenuController/blob/master/sample1.gif'
+#s.screenshots     = 'https://github.com/sumitjagdev/SJSwiftSideMenuController/blob/master/image01.png, https://github.com/sumitjagdev/SJSwiftSideMenuController/blob/master/image02.png, https://github.com/sumitjagdev/SJSwiftSideMenuController/blob/master/image03.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Sumit Jagdev' => 'sumitjagdev3@gmail.com' }
   s.source           = { 
@@ -43,6 +43,4 @@ You have to just set property and the menu get reflect with you requirement.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
-
-
 end

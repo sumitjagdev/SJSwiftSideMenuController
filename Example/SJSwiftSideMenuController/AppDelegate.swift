@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let months = DateFormatter().monthSymbols
         let days = DateFormatter().weekdaySymbols
         
+        
+        let mainVC = SJSwiftSideMenuController()
+        
         let sideVC_L : SideMenuController = (storyBoard.instantiateViewController(withIdentifier: "SideMenuController") as? SideMenuController)!
         sideVC_L.menuItems = months as NSArray!
         
@@ -30,9 +33,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let rootVC = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
         
-        SJSwiftSideMenuController.setUpNavigation(rootController: rootVC, leftMenuController: sideVC_L, rightMenuController: sideVC_R, leftMenuType: .SlideView, rightMenuType: .SlideView)
+        SJSwiftSideMenuController.setUpNavigation(rootController: rootVC, leftMenuController: sideVC_L, rightMenuController: sideVC_R, leftMenuType: .SlideOver, rightMenuType: .SlideView)
         
         SJSwiftSideMenuController.enableSwipeGestureWithMenuSide(menuSide: .LEFT)
+        
+        SJSwiftSideMenuController.enableDimbackground = true
+        SJSwiftSideMenuController.leftMenuWidth = 280
+        //=======================================
+        
+        self.window?.rootViewController = mainVC
+        self.window?.makeKeyAndVisible()
+        
+        
+        
         
         return true
     }

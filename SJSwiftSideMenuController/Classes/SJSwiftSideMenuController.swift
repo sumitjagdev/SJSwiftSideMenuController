@@ -1,8 +1,8 @@
 //
 //  SJSwiftSideMenuController.swift
-//  Pods
+//  SJSwiftNavigationController
 //
-//  Created by Mac on 1/6/17.
+//  Created by Sumit Jagdev on 1/6/17.
 //  Copyright © 2017 Sumit Jagdev. All rights reserved.
 //
 
@@ -27,7 +27,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     
     private static var isSetup : Bool = false
     
-    public static var enableDimBackground : Bool = false
+    public static var enableDimbackground : Bool = false
     
     public static var shouldLeaveSpaceForStatusBar : Bool = false
     private static var shouldShowLeftButton : Bool = false
@@ -36,7 +36,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     private static var menuIcon_Right : UIImage = UIImage()
     
     private static var navigator : UINavigationController! = nil
-    private static var navigationContainer : UIViewController! = nil
+    public static var navigationContainer : UIViewController! = nil
     
     // left menu views
     private static var leftSideMenuController : UIViewController!
@@ -86,28 +86,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         
         isSetup = true
         
-        //                leftSideMenuController = leftMenuController
-        ////        let leftNav : UINavigationController = UINavigationController(rootViewController: leftMenuController!)
-        ////        leftNav.isNavigationBarHidden = false
-        ////        let barLeft:UINavigationBar! =  leftNav.navigationBar
-        ////        barLeft.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        ////        barLeft.shadowImage = UIImage()
-        ////        barLeft.alpha = 0.0
-        //
-        ////        leftSideMenuController = leftNav
-        ////        leftSideMenuType = leftMenuType
-        //
-        //
-        ////                rightSideMenuController = rightMenuController
-        //        let rightNav : UINavigationController = UINavigationController(rootViewController: rightMenuController!)
-        //        rightNav.isNavigationBarHidden = false
-        //        let bar:UINavigationBar! =  rightNav.navigationBar
-        //        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        //        bar.shadowImage = UIImage()
-        ////        bar.alpha = 0.0
-        //
-        //        rightSideMenuController = rightNav
-        //        rightSideMenuType = rightMenuType
+        
         
         
         
@@ -211,7 +190,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     func setUpContainers() {
         //======================= Container View ===============================
         SJSwiftSideMenuController.containerView = UIView()
-        SJSwiftSideMenuController.containerView.backgroundColor = UIColor.purple
+        SJSwiftSideMenuController.containerView.backgroundColor = UIColor.white
         let frame = self.view.bounds
         
         SJSwiftSideMenuController.containerView.frame = frame
@@ -320,15 +299,15 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         if SJSwiftSideMenuController.dimBGView == nil {
             return
         }
-        if enableDimBackground == false {
+        if enableDimbackground == false {
             return;
         }
         UIView.transition(with: SJSwiftSideMenuController.dimBGView, duration: 0.25, options: .curveEaseInOut, animations: {() -> Void in
             
             SJSwiftSideMenuController.dimBGView.isHidden = !show
             
-            }, completion: { _ in
-                
+        }, completion: { _ in
+            
         })
     }
     fileprivate func addViewControllerAsChildViewController(_ viewController: UIViewController, inContainer: UIView) {
@@ -427,6 +406,10 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         }else{
             SJSwiftSideMenuController.hideLeftMenuOver()
         }
+        
+        if leftSideMenuController != nil {
+            leftSideMenuController .viewWillAppear(true)
+        }
     }
     
     private static func toggleLeftSlideViewMenu() {
@@ -452,6 +435,9 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
                 SJSwiftSideMenuController.hideLeftMenu()
             }
         }
+        if SJSwiftSideMenuController.leftSideMenuController != nil {
+            SJSwiftSideMenuController.leftSideMenuController .viewWillAppear(true)
+        }
     }
     private static func showLeftMenuOver() {
         
@@ -465,12 +451,15 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         SJSwiftSideMenuController.navigationContainer.view.bringSubview(toFront: SJSwiftSideMenuController.leftSideMenuView)
         SJSwiftSideMenuController.leftSideMenuView.isHidden = false
         UIView.animate(withDuration: 0.25, animations: {
-            var frame = leftSideMenuView.frame
-            frame.origin.x = 0
-            leftSideMenuView.frame = frame
-            SJSwiftSideMenuController.navigationContainer.view.layoutSubviews()
-            SJSwiftSideMenuController.leftSideMenuView.layoutSubviews()
-            SJSwiftSideMenuController.navigator.view.layoutSubviews()
+            //            var frame = leftSideMenuView.frame
+            //            frame.origin.x = 0
+            //            leftSideMenuView.frame = frame
+            //            SJSwiftSideMenuController.navigationContainer.view.layoutSubviews()
+            //            SJSwiftSideMenuController.leftSideMenuView.layoutSubviews()
+            //            SJSwiftSideMenuController.navigator.view.layoutSubviews()
+            leadingConstraintOfSideMenu_Left.constant = 0
+            SJSwiftSideMenuController.navigationContainer.view.layoutIfNeeded()
+            
         }) { (isComplete) in
             
         }
@@ -481,14 +470,14 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         showDimBackground(show: false)
         
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
+        if SJSwiftSideMenuController.navigationContainer == nil {
+            return
+        }
         SJSwiftSideMenuController.navigationContainer.view.bringSubview(toFront: SJSwiftSideMenuController.leftSideMenuView)
         UIView.animate(withDuration: 0.25, animations: {
-            var frame = leftSideMenuView.frame
-            frame.origin.x = -(leftMenuWidth)
-            leftSideMenuView.frame = frame
-            SJSwiftSideMenuController.navigationContainer.view.layoutSubviews()
-            SJSwiftSideMenuController.leftSideMenuView.layoutSubviews()
-            SJSwiftSideMenuController.navigator.view.layoutSubviews()
+            
+            leadingConstraintOfSideMenu_Left.constant = -(leftMenuWidth)
+            SJSwiftSideMenuController.navigationContainer.view.layoutIfNeeded()
         }) { (isComplete) in
             SJSwiftSideMenuController.leftSideMenuView.isHidden = true
         }
@@ -621,7 +610,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.leadingConstraintOfSideMenu_Right.constant = SJSwiftSideMenuController.containerView.frame.size.width - rightMenuWidth
             SJSwiftSideMenuController.navigationContainer.view.layoutIfNeeded()
-            }, completion: nil)
+        }, completion: nil)
         
     }
     private static func hideRightMenuOver() {
@@ -633,8 +622,8 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.leadingConstraintOfSideMenu_Right.constant = SJSwiftSideMenuController.containerView.frame.size.width
             SJSwiftSideMenuController.navigationContainer.view.layoutIfNeeded()
-            }, completion: { _ in
-                SJSwiftSideMenuController.rightSideMenuView.isHidden = true
+        }, completion: { _ in
+            SJSwiftSideMenuController.rightSideMenuView.isHidden = true
         })
     }
     
@@ -660,8 +649,8 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
             rightSideMenuView.frame = frame
             SJSwiftSideMenuController.containerView.layoutIfNeeded()
             
-            }, completion: { _ in
-                
+        }, completion: { _ in
+            
         })
     }
     
@@ -681,8 +670,8 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
             rightSideMenuView.frame = frame
             SJSwiftSideMenuController.containerView.layoutIfNeeded()
             
-            }, completion: { _ in
-                SJSwiftSideMenuController.rightSideMenuView.isHidden = true
+        }, completion: { _ in
+            SJSwiftSideMenuController.rightSideMenuView.isHidden = true
         })
     }
     
@@ -691,15 +680,39 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     }
     
     //MARK: Navigation
+    // Uses a horizontal slide transition. Has no effect if the view controller is already in the stack.
+    public static func setRootController(_ viewController: UIViewController, animated: Bool) {
+        SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
+        SJSwiftSideMenuController.navigator.pushViewController(viewController, animated: animated)
+        SJSwiftSideMenuController.navigator.viewControllers = [viewController]
+        //        SJSwiftSideMenuController.navigator.pushViewController(viewController, animated: animated)
+    }
     
     // Uses a horizontal slide transition. Has no effect if the view controller is already in the stack.
     public static func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
-        SJSwiftSideMenuController.navigator.pushViewController(viewController, animated: animated)
+        DispatchQueue.main.async {
+            SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
+            var vcList = SJSwiftSideMenuController.viewControllers
+            if vcList.contains(viewController) == true {
+                let index = vcList.index(of: viewController)
+                vcList.remove(at: index!)
+                SJSwiftSideMenuController.navigator.viewControllers = vcList
+            }
+            SJSwiftSideMenuController.navigator.pushViewController(viewController, animated: animated)
+        }
     }
     
     // Returns the popped controller.
-    public static func popViewController(animated: Bool) -> UIViewController?{
+    public static func popViewController(animated: Bool){
+        DispatchQueue.main.async {
+            SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
+            SJSwiftSideMenuController.navigator.popViewController(animated: animated)
+        }
+    }
+    
+    // Returns the popped controller.
+    public static func popAndGetViewController(animated: Bool) -> UIViewController?{
+        
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
         return SJSwiftSideMenuController.navigator.popViewController(animated: animated)
     }
@@ -778,27 +791,31 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
             SJSwiftSideMenuController.hideRightMenu()
         }
     }
+    
+    public static func replaceViewController(atIndex : Int, newVC : UIViewController) {
+        SJSwiftSideMenuController.navigator.viewControllers[atIndex] = newVC
+    }
 }
 
 //MARK : UIColor
-
-
-extension CGFloat {
-    public static func random() -> CGFloat {
-        return CGFloat(arc4random()) / CGFloat(UInt32.max)
-    }
-}
-
-extension UIColor {
-    public static func randomColor() -> UIColor {
-        // If you wanted a random alpha, just create another
-        // random number for that too.
-        return UIColor(red:   .random(),
-                       green: .random(),
-                       blue:  .random(),
-                       alpha: 1.0)
-    }
-}
+//
+//
+//extension CGFloat {
+//    public static func random() -> CGFloat {
+//        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+//    }
+//}
+//
+//extension UIColor {
+//    public static func randomColor() -> UIColor {
+//        // If you wanted a random alpha, just create another
+//        // random number for that too.
+//        return UIColor(red:   .random(),
+//                       green: .random(),
+//                       blue:  .random(),
+//                       alpha: 1.0)
+//    }
+//}
 
 extension UIButton {
     public func centerTextAndImage(spacing: CGFloat) {
@@ -1141,3 +1158,9 @@ extension UIView {
     }
 }
 
+
+extension NSObject {
+    var theClassName: String {
+        return NSStringFromClass(type(of: self))
+    }
+}
