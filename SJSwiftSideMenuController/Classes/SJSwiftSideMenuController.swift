@@ -125,11 +125,11 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         
         // menu gesture recognisers
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(SJSwiftSideMenuController.toggleMenuWithGesture(gesture:)))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action:#selector(SJSwiftSideMenuController.toggleMenuWithGesture(gesture:)))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(swipeLeft)
         
     }
@@ -194,7 +194,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         let frame = self.view.bounds
         
         SJSwiftSideMenuController.containerView.frame = frame
-        SJSwiftSideMenuController.containerView.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
+        SJSwiftSideMenuController.containerView.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
         self.view.addSubview(SJSwiftSideMenuController.containerView)
         
         SJSwiftSideMenuController.topConstraintOfSideContainer = SJSwiftSideMenuController.containerView.addTopConstraint(toView: view, constant: 0.0)
@@ -217,7 +217,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
                 frame.origin.x = -(SJSwiftSideMenuController.leftMenuWidth)
             }
             SJSwiftSideMenuController.leftSideMenuView.frame = frame
-            SJSwiftSideMenuController.leftSideMenuView.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
+            SJSwiftSideMenuController.leftSideMenuView.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
             self.view.addSubview(SJSwiftSideMenuController.leftSideMenuView)
             
             SJSwiftSideMenuController.topConstraintOfSideMenu_Left = SJSwiftSideMenuController.leftSideMenuView.addTopConstraint(toView: view, constant: 0.0)
@@ -247,9 +247,9 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
                 frameRight.origin.x = 0
             }
             SJSwiftSideMenuController.rightSideMenuView.frame = frameRight
-            SJSwiftSideMenuController.rightSideMenuView.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
+            SJSwiftSideMenuController.rightSideMenuView.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
             self.view.addSubview(SJSwiftSideMenuController.rightSideMenuView)
-            self.view.bringSubview(toFront: SJSwiftSideMenuController.rightSideMenuView)
+            self.view.bringSubviewToFront(SJSwiftSideMenuController.rightSideMenuView)
             
             SJSwiftSideMenuController.topConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addTopConstraint(toView: view, constant: 0.0)
             if SJSwiftSideMenuController.rightSideMenuType == .SlideOver {
@@ -281,7 +281,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         let frame = self.view.bounds
         
         SJSwiftSideMenuController.dimBGView.frame = frame
-        SJSwiftSideMenuController.dimBGView.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
+        SJSwiftSideMenuController.dimBGView.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
         self.view.addSubview(SJSwiftSideMenuController.dimBGView)
         
         SJSwiftSideMenuController.dimBGView.addTopConstraint(toView: view, constant: 0.0)
@@ -315,7 +315,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         
         
         //                 Add Child View Controller
-        addChildViewController(viewController)
+        addChild(viewController)
         //
         //        // Add Child View as Subview
         inContainer.addSubview(viewController.view!)
@@ -325,11 +325,11 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         var childFrame = inContainer.frame
         childFrame.origin = CGPoint.zero
         viewController.view?.frame = childFrame
-        viewController.view.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin
-            , UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        viewController.view.autoresizingMask = [UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin
+            , UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         //
         //        // Notify Child View Controller
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
     }
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -425,15 +425,13 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     {
         SJSwiftSideMenuController.validateForLeftMenuSetup()
         
-        if let swipeGesture = gesture as UISwipeGestureRecognizer! {
-            switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.right:
-                SJSwiftSideMenuController.showLeftMenu()
-            case UISwipeGestureRecognizerDirection.left:
-                SJSwiftSideMenuController.hideLeftMenu()
-            default:
-                SJSwiftSideMenuController.hideLeftMenu()
-            }
+        switch gesture.direction {
+        case UISwipeGestureRecognizer.Direction.right:
+            SJSwiftSideMenuController.showLeftMenu()
+        case UISwipeGestureRecognizer.Direction.left:
+            SJSwiftSideMenuController.hideLeftMenu()
+        default:
+            SJSwiftSideMenuController.hideLeftMenu()
         }
         if SJSwiftSideMenuController.leftSideMenuController != nil {
             SJSwiftSideMenuController.leftSideMenuController .viewWillAppear(true)
@@ -448,7 +446,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         showDimBackground(show: true)
         
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
-        SJSwiftSideMenuController.navigationContainer.view.bringSubview(toFront: SJSwiftSideMenuController.leftSideMenuView)
+        SJSwiftSideMenuController.navigationContainer.view.bringSubviewToFront(SJSwiftSideMenuController.leftSideMenuView)
         SJSwiftSideMenuController.leftSideMenuView.isHidden = false
         UIView.animate(withDuration: 0.25, animations: {
             //            var frame = leftSideMenuView.frame
@@ -473,7 +471,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         if SJSwiftSideMenuController.navigationContainer == nil {
             return
         }
-        SJSwiftSideMenuController.navigationContainer.view.bringSubview(toFront: SJSwiftSideMenuController.leftSideMenuView)
+        SJSwiftSideMenuController.navigationContainer.view.bringSubviewToFront(SJSwiftSideMenuController.leftSideMenuView)
         UIView.animate(withDuration: 0.25, animations: {
             
             leadingConstraintOfSideMenu_Left.constant = -(leftMenuWidth)
@@ -584,15 +582,13 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
     {
         SJSwiftSideMenuController.validateForRightMenuSetup()
         
-        if let swipeGesture = gesture as UISwipeGestureRecognizer! {
-            switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.right:
-                SJSwiftSideMenuController.hideRightMenu()
-            case UISwipeGestureRecognizerDirection.left:
-                SJSwiftSideMenuController.showRightMenu()
-            default:
-                SJSwiftSideMenuController.hideRightMenu()
-            }
+        switch gesture.direction {
+        case UISwipeGestureRecognizer.Direction.right:
+            SJSwiftSideMenuController.hideRightMenu()
+        case UISwipeGestureRecognizer.Direction.left:
+            SJSwiftSideMenuController.showRightMenu()
+        default:
+            SJSwiftSideMenuController.hideRightMenu()
         }
     }
     private static func showRightMenuOver() {
@@ -604,10 +600,10 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         showDimBackground(show: true)
         
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
-        SJSwiftSideMenuController.navigationContainer.view.bringSubview(toFront: SJSwiftSideMenuController.rightSideMenuView)
+        SJSwiftSideMenuController.navigationContainer.view.bringSubviewToFront(SJSwiftSideMenuController.rightSideMenuView)
         SJSwiftSideMenuController.rightSideMenuView.isHidden = false
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.leadingConstraintOfSideMenu_Right.constant = SJSwiftSideMenuController.containerView.frame.size.width - rightMenuWidth
             SJSwiftSideMenuController.navigationContainer.view.layoutIfNeeded()
         }, completion: nil)
@@ -617,9 +613,9 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
         showDimBackground(show: false)
         
         SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
-        SJSwiftSideMenuController.navigationContainer.view.bringSubview(toFront: SJSwiftSideMenuController.rightSideMenuView)
+        SJSwiftSideMenuController.navigationContainer.view.bringSubviewToFront(SJSwiftSideMenuController.rightSideMenuView)
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.leadingConstraintOfSideMenu_Right.constant = SJSwiftSideMenuController.containerView.frame.size.width
             SJSwiftSideMenuController.navigationContainer.view.layoutIfNeeded()
         }, completion: { _ in
@@ -694,7 +690,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
             SJSwiftSideMenuController.validateForNavigationSetup() //Check for setup
             var vcList = SJSwiftSideMenuController.viewControllers
             if vcList.contains(viewController) == true {
-                let index = vcList.index(of: viewController)
+                let index = vcList.firstIndex(of: viewController)
                 vcList.remove(at: index!)
                 SJSwiftSideMenuController.navigator.viewControllers = vcList
             }
@@ -881,7 +877,7 @@ extension UIView {
      :returns: The created `NSLayoutConstraint` for this leading attribute relation
      */
     @discardableResult
-    public func addLeadingConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .leading, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    public func addLeadingConstraint(toView view: UIView?, attribute: NSLayoutConstraint.Attribute = .leading, relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
         let constraint = createConstraint(attribute: .leading, toView: view, attribute: attribute, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
@@ -916,7 +912,7 @@ extension UIView {
      :returns: The created `NSLayoutConstraint` for this trailing attribute relation
      */
     @discardableResult
-    public func addTrailingConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .trailing, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    public func addTrailingConstraint(toView view: UIView?, attribute: NSLayoutConstraint.Attribute = .trailing, relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
         let constraint = createConstraint(attribute: .trailing, toView: view, attribute: attribute, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
@@ -944,7 +940,7 @@ extension UIView {
      :returns: The created NSLayoutConstraint for this left attribute relation
      */
     @discardableResult
-    public func addLeftConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .left, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    public func addLeftConstraint(toView view: UIView?, attribute: NSLayoutConstraint.Attribute = .left, relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
         let constraint = createConstraint(attribute: .left, toView: view, attribute: attribute, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
@@ -972,7 +968,7 @@ extension UIView {
      :returns: The created NSLayoutConstraint for this right attribute relation
      */
     @discardableResult
-    public func addRightConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .right, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    public func addRightConstraint(toView view: UIView?, attribute: NSLayoutConstraint.Attribute = .right, relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
         let constraint = createConstraint(attribute: .right, toView: view, attribute: attribute, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
@@ -1000,7 +996,7 @@ extension UIView {
      :returns: The created NSLayoutConstraint for this top edge layout relation
      */
     @discardableResult
-    public func addTopConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .top, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    public func addTopConstraint(toView view: UIView?, attribute: NSLayoutConstraint.Attribute = .top, relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
         let constraint = createConstraint(attribute: .top, toView: view, attribute: attribute, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
@@ -1028,7 +1024,7 @@ extension UIView {
      :returns: The created NSLayoutConstraint for this bottom edge layout relation
      */
     @discardableResult
-    public func addBottomConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .bottom, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    public func addBottomConstraint(toView view: UIView?, attribute: NSLayoutConstraint.Attribute = .bottom, relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
         let constraint = createConstraint(attribute: .bottom, toView: view, attribute: attribute, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
@@ -1052,7 +1048,7 @@ extension UIView {
      :returns: The created NSLayoutConstraint for this center X layout relation
      */
     @discardableResult
-    public func addCenterXConstraint(toView view: UIView?, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    public func addCenterXConstraint(toView view: UIView?, relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
         let constraint = createConstraint(attribute: .centerX, toView: view, attribute: .centerX, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
@@ -1076,7 +1072,7 @@ extension UIView {
      :returns: The created NSLayoutConstraint for this center Y layout relation
      */
     @discardableResult
-    public func addCenterYConstraint(toView view: UIView?, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    public func addCenterYConstraint(toView view: UIView?, relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
         let constraint = createConstraint(attribute: .centerY, toView: view, attribute: .centerY, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
@@ -1100,7 +1096,7 @@ extension UIView {
      :returns: The created NSLayoutConstraint for this width layout relation
      */
     @discardableResult
-    public func addWidthConstraint(toView view: UIView?, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    public func addWidthConstraint(toView view: UIView?, relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
         let constraint = createConstraint(attribute: .width, toView: view, attribute: .width, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
@@ -1124,7 +1120,7 @@ extension UIView {
      :returns: The created NSLayoutConstraint for this height layout relation
      */
     @discardableResult
-    public func addHeightConstraint(toView view: UIView?, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    public func addHeightConstraint(toView view: UIView?, relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
         let constraint = createConstraint(attribute: .height, toView: view, attribute: .height, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
@@ -1143,7 +1139,7 @@ extension UIView {
     }
     
     /// Creates an NSLayoutConstraint using its factory method given both views, attributes a relation and offset
-    fileprivate func createConstraint(attribute attr1: NSLayoutAttribute, toView: UIView?, attribute attr2: NSLayoutAttribute, relation: NSLayoutRelation, constant: CGFloat) -> NSLayoutConstraint {
+    fileprivate func createConstraint(attribute attr1: NSLayoutConstraint.Attribute, toView: UIView?, attribute attr2: NSLayoutConstraint.Attribute, relation: NSLayoutConstraint.Relation, constant: CGFloat) -> NSLayoutConstraint {
         
         let constraint = NSLayoutConstraint(
             item: self,
