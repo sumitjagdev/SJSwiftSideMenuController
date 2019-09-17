@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        if let image : UIImage = UIImage(named: "menu") as UIImage! {
+        if let image : UIImage = UIImage(named: "menu") as UIImage? {
             SJSwiftSideMenuController .showLeftMenuNavigationBarButton(image: image)
             SJSwiftSideMenuController .showRightMenuNavigationBarButton(image: image)
         }
