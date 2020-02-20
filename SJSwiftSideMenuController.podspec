@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'SJSwiftSideMenuController'
-    s.version          = '1.3'
+    s.version          = '2.0'
     s.summary          = 'SJSwiftSideMenuController is Side Menu Controller for both Side Left & Right Menu.'
 
     s.description      = <<-DESC
