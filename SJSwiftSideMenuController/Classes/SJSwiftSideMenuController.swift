@@ -222,7 +222,7 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
             
             SJSwiftSideMenuController.topConstraintOfSideMenu_Left = SJSwiftSideMenuController.leftSideMenuView.addTopConstraint(toView: view, constant: 0.0)
             if SJSwiftSideMenuController.leftSideMenuType == .SlideOver {
-                SJSwiftSideMenuController.leadingConstraintOfSideMenu_Left = SJSwiftSideMenuController.leftSideMenuView.addLeadingConstraint(toView: view, constant: 0.0)
+                SJSwiftSideMenuController.leadingConstraintOfSideMenu_Left = SJSwiftSideMenuController.leftSideMenuView.addLeadingConstraint(toView: view, constant: -(SJSwiftSideMenuController.leftMenuWidth))
             }else{
                 SJSwiftSideMenuController.leadingConstraintOfSideMenu_Left = SJSwiftSideMenuController.leftSideMenuView.addLeadingConstraint(toView: view, constant: -(SJSwiftSideMenuController.leftMenuWidth))
             }
@@ -253,9 +253,9 @@ public class SJSwiftSideMenuController: UIViewController, UINavigationController
             
             SJSwiftSideMenuController.topConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addTopConstraint(toView: view, constant: 0.0)
             if SJSwiftSideMenuController.rightSideMenuType == .SlideOver {
-                SJSwiftSideMenuController.leadingConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addLeadingConstraint(toView: view, constant: view.frame.size.width - SJSwiftSideMenuController.rightMenuWidth)
+                SJSwiftSideMenuController.leadingConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addLeadingConstraint(toView: view, constant: view.frame.size.width)
             }else{
-                SJSwiftSideMenuController.leadingConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addLeadingConstraint(toView: view, constant: view.frame.size.width - SJSwiftSideMenuController.rightMenuWidth)
+                SJSwiftSideMenuController.leadingConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addLeadingConstraint(toView: view, constant: view.frame.size.width)
             }
             SJSwiftSideMenuController.widthConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addWidthConstraint(widthConstant: SJSwiftSideMenuController.rightMenuWidth)
             SJSwiftSideMenuController.bottomConstraintOfSideMenu_Right = SJSwiftSideMenuController.rightSideMenuView.addBottomConstraint(toView: view, constant: 0.0)
